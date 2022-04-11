@@ -1,4 +1,4 @@
-class Node{
+class Node {
     constructor(data, next = null){
         this.data = data;
         this.next = next;
@@ -10,7 +10,8 @@ class LinkedList {
         this.head = null;
         this.size = 0;
     }
-    // Insert the first node
+    
+    // Insert first node
     insertFirst(data){
         this.head = new Node(data, this.head);
         this.size++;
@@ -21,13 +22,12 @@ class LinkedList {
         let node = new Node(data);
         let current;
 
-        // if empty, make head
+        // If empty, make head
         if(!this.head){
             this.head = node;
         }
         else{
             current = this.head;
-
             while(current.next){
                 current = current.next;
             }
@@ -36,28 +36,31 @@ class LinkedList {
         this.size++;
     }
 
-    // Insert At index
+
+    // Insert at Index
     insertAt(data, index){
         // If index is out of range
         if(index>0 && index>this.size){
             return;
         }
 
-        // If first index
-        if(index==0){
+        // If at first index....setting it to head
+        if(index===0){
             this.head = new Node(data, this.head);
             return;
         }
 
         const node = new Node(data);
         let current, previous;
-        //Set current to first 
+
+        // Set current to first
         current = this.head;
         let count = 0;
+
         while(count<index){
             previous = current; // Node before index
             count++;
-            current = current.next; //Node after index
+            current = current.next; // Node after the index
         }
         node.next = current;
         previous.next = node;
@@ -68,20 +71,20 @@ class LinkedList {
 
     // Get at Index
     getAt(index){
-        let current = this.head;
-        let count = 0;
+    let current = this.head;
+    let count = 0;
 
-        while(current){
-            if(count==index){
-                console.log(current.data);
-            }
-            count++;
-            current = current.next;
+    while(current){
+        if(count==index){
+            console.log(current.data);
         }
-        return null;
+        count++;
+        current = current.next;
+    }
+    return null;
     }
 
-    // Remove at index
+    // Remove at Index
     removeAt(index){
         if(index>0 && index>this.size){
             return;
@@ -91,7 +94,7 @@ class LinkedList {
         let count = 0;
 
         // Remove first
-        if(index === 0){
+        if(index==0){
             this.head = current.next;
         }
         else{
@@ -111,7 +114,7 @@ class LinkedList {
         this.size = 0;
     }
 
-    // Print the list data
+    // Print list data
     printListData(){
         let current = this.head;
         while(current){
@@ -125,7 +128,9 @@ const ll = new LinkedList();
 ll.insertFirst(100);
 ll.insertFirst(200);
 ll.insertFirst(300);
-ll.insertLast(400)
-
+ll.insertLast(400);
+ll.insertAt(500,0)
 ll.clearList()
+// ll.getAt(2)
+
 ll.printListData()
